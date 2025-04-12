@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Zombie : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    UnityEngine.AI.NavMeshAgent navAI;
     void Start()
     {
-        
+        navAI = GetComponent<UnityEngine.AI.NavMeshAgent>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        navAI.SetDestination(Player.instance.transform.position);
     }
 }

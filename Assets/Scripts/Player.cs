@@ -9,8 +9,10 @@ public class Player : MonoBehaviour
         } 
     }
     private CharacterController controller;
+    public static Player instance;
     void Start()
     {
+        instance = this;
         controller = GetComponent<CharacterController>();
     }
 
