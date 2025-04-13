@@ -399,10 +399,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 556972781}
+  - component: {fileID: 556972782}
   - component: {fileID: 556972780}
   - component: {fileID: 556972779}
   - component: {fileID: 556972778}
-  - component: {fileID: 556972782}
   - component: {fileID: 556972783}
   m_Layer: 0
   m_Name: Zombie
@@ -517,6 +517,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distanceToPlayer: 0
+  walkPointRange: 10
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  sightRange: 10
+  attackRange: 5
+  playerInSightRange: 0
+  playerInAttackRange: 0
 --- !u!195 &556972783
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -803,7 +814,7 @@ GameObject:
   - component: {fileID: 1004413715}
   - component: {fileID: 1004413716}
   - component: {fileID: 1004413717}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1067,7 +1078,7 @@ GameObject:
   - component: {fileID: 1539532493}
   - component: {fileID: 1539532492}
   - component: {fileID: 1539532497}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
