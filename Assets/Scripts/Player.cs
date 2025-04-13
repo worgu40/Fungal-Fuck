@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     private CharacterController controller;
     public static Player instance;
     [SerializeField] GameObject playerModel; // Bald Guy
+    [SerializeField] Animator modelAnimator;
     public GameObject attackHitbox;
     private BoxCollider hitboxCollider;
     void Start()
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
             {
                 playerModel.transform.localRotation = Quaternion.Euler(0, (Mathf.Atan(-movementCreation.z / movementCreation.x) + (movementCreation.x<0? 0 : Mathf.PI)) * 180 / Mathf.PI, 0);
             }
+            modelAnimator.SetFloat("WalkSpeed",movementCreation.magnitude);
         }
         attackHitbox.transform.position = transform.position + playerModel.transform.rotation * offset;
         if (Input.GetButtonDown("Fire1") && canAttack) {
@@ -56,6 +58,7 @@ public class Player : MonoBehaviour
     private IEnumerator Attack() {
         canAttack = false;
         hitboxCollider.enabled = true;
+        modelAnimator.SetTrigger("AttackTrigger");
         yield return new WaitForSeconds(0.5f);
         hitboxCollider.enabled = false;
         canAttack = true;

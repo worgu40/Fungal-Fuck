@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &39579731 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8715001862308269717, guid: aee229bc76859b44db311fdd5ad21669, type: 3}
+  m_PrefabInstance: {fileID: 4516529137179966090}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &53078667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,6 +1469,7 @@ MonoBehaviour:
   offset: {x: -1.5, y: 0, z: 0}
   designerSpeed: 6
   playerModel: {fileID: 8679829632504338889}
+  modelAnimator: {fileID: 39579731}
   attackHitbox: {fileID: 1347475384}
 --- !u!208 &1539532497
 NavMeshObstacle:
