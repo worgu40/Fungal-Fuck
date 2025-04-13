@@ -15,9 +15,13 @@ public class Zombie : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
     private bool touchingPlayer = false;
+    public float health;
+    public GameObject attackHitbox;
+    private BoxCollider hitboxCollider;
     void Start()
     {
         navAI = GetComponent<NavMeshAgent>();
+        hitboxCollider = attackHitbox.GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -28,7 +32,7 @@ public class Zombie : MonoBehaviour
         navAI.SetDestination(Player.instance.transform.position);
         distanceToPlayer = Vector3.Distance(Player.instance.transform.position, transform.position);
         if (!playerInSightRange && !playerInAttackRange) {
-            Patroling();
+            Patrolling();
         }
         if (playerInSightRange && !playerInAttackRange) {
             ChasePlayer();
@@ -40,7 +44,7 @@ public class Zombie : MonoBehaviour
             canAttack = false;
         }
     }
-    private void Patroling() {
+    private void Patrolling() {
         if (!walkPointSet) {
             SearchWalkPoint();
         }
@@ -93,5 +97,23 @@ public class Zombie : MonoBehaviour
         Player.instance.health -= damage;
         yield return new WaitForSeconds(1f); 
         canAttack = true;
+    }
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Hitbox")) {
+            TakeDamage(10f); 
+            Debug.Log("Hitbox Triggered, Health is at " + health);
+            if (health <= 0) {
+                Destroy(gameObject);
+            }
+            hitboxCollider.enabled = false;
+        }
+    }
+    
+    
+    private void TakeDamage(float damage) {
+        health -= damage;
+        if (health <= 0) {
+            Destroy(gameObject);
+        }
     }
 }

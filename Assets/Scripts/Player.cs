@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,19 +8,23 @@ public class Player : MonoBehaviour
 
     public float health;
     public Image healthBar;
-    [SerializeField] float designerSpeed;
+    public Vector3 offset = new Vector3(2f, 0, 0);    [SerializeField] float designerSpeed;
     float Speed { 
         get { 
             return designerSpeed; 
         } 
     }
+    private bool canAttack = true;
     private CharacterController controller;
     public static Player instance;
-    [SerializeField] GameObject playerModel;
+    [SerializeField] GameObject playerModel; // Bald Guy
+    public GameObject attackHitbox;
+    private BoxCollider hitboxCollider;
     void Start()
     {
         instance = this;
         controller = GetComponent<CharacterController>();
+        hitboxCollider = attackHitbox.GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -39,7 +44,23 @@ public class Player : MonoBehaviour
                 playerModel.transform.localRotation = Quaternion.Euler(0, (Mathf.Atan(-movementCreation.z / movementCreation.x) + (movementCreation.x<0? 0 : Mathf.PI)) * 180 / Mathf.PI, 0);
             }
         }
+        attackHitbox.transform.position = transform.position + playerModel.transform.rotation * offset;
+        if (Input.GetButtonDown("Fire1") && canAttack) {
+            StartCoroutine(Attack());
+        }
+
+        
         // Health
         healthBar.fillAmount = health / 100f;
+    }
+    private IEnumerator Attack() {
+        canAttack = false;
+        hitboxCollider.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        hitboxCollider.enabled = false;
+        canAttack = true;
+    } 
+    void FixedUpdate()
+    {
     }
 }
