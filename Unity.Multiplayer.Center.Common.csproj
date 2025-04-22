@@ -17,7 +17,7 @@
     <LangVersion>9.0</LangVersion>
     <RootNamespace></RootNamespace>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Unity.Multiplayer.Center.Common</AssemblyName>
     <TargetFramework>netstandard2.1</TargetFramework>
     <BaseDirectory>.</BaseDirectory>
   </PropertyGroup>
@@ -48,13 +48,15 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Zombie.cs" />
-    <Compile Include="Assets\Scripts\ItemManager.cs" />
-    <Compile Include="Assets\Scripts\Data.cs" />
-    <Compile Include="Assets\Scripts\Item.cs" />
-    <Compile Include="Assets\Scripts\InventoryManager.cs" />
-    <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\StyleConstants.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\IOnboardingSectionAnalyticsProvider.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\IOnboardingSection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\AnswerData.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\Preset.cs" />
+    <Compile Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\SelectedSolutionsData.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Library\PackageCache\com.unity.multiplayer.center@f3fb577b3546\Common\Unity.Multiplayer.Center.Common.asmdef" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -519,6 +521,18 @@
     </Reference>
     <Reference Include="UnityEditor.XRModule">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Data\Managed\UnityEngine\UnityEditor.XRModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Data\Managed\UnityEditor.Graphs.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WebGL.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Data\PlaybackEngines\WebGLSupport\UnityEditor.WebGL.Extensions.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="nunit.framework">
@@ -1015,17 +1029,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Unity.Multiplayer.Center.Editor.csproj" />
     <ProjectReference Include="UnityEditor.UI.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.csproj" />
-    <ProjectReference Include="Unity.2D.Sprite.Editor.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.ConversionSystem.csproj" />
-    <ProjectReference Include="Unity.Multiplayer.Center.Common.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Updater.csproj" />
-    <ProjectReference Include="Unity.TextMeshPro.Editor.csproj" />
-    <ProjectReference Include="Unity.VisualStudio.Editor.csproj" />
-    <ProjectReference Include="Unity.TextMeshPro.csproj" />
-    <ProjectReference Include="Unity.AI.Navigation.Editor.csproj" />
     <ProjectReference Include="UnityEngine.UI.csproj" />
   </ItemGroup>
   <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" />
